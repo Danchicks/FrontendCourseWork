@@ -418,7 +418,7 @@
             const book = { author, title, year, quantity, coverUrl };
 
             if (editingBookId) {
-                fetch(`http://localhost:8080/${editingBookId}`, {
+                fetch(`http://localhost:8080/books/${editingBookId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(book)
@@ -429,7 +429,7 @@
                     })
                     .catch(error => console.error('Error updating book:', error));
             } else {
-                fetch('http://localhost:8080/library/books', {
+                fetch('http://localhost:8080/books/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(book)
@@ -443,7 +443,7 @@
         }
 
         function deleteBook(id) {
-            fetch(`http://localhost:8080/${id}`, { method: 'DELETE' })
+            fetch(`http://localhost:8080/books/${id}`, { method: 'DELETE' })
                 .then(() => {
                     document.getElementById(`book-${id}`).remove();
                 })
